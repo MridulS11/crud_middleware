@@ -3,6 +3,7 @@ package main
 import (
 	"crud_api/configs"
 	"crud_api/internals/handlers"
+	"crud_api/internals/middleware"
 	"fmt"
 	"log"
 	"net/http"
@@ -19,7 +20,8 @@ func main(){
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "Hello, Client!")
 	})
-	if err := http.ListenAndServe(":8080", mux); err != nil{
+	middle := middleware.JsonContentType(middleware.SecLayer(mux))
+	if err := http.ListenAndServe(":8080", middle); err != nil{
 		log.Println(configs.ErrCode,err)
 		return
 	}

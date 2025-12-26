@@ -17,7 +17,6 @@ func UpdateBook(w http.ResponseWriter, r *http.Request){
 				http.Error(w, "Invalid Json", http.StatusBadRequest)
 				return
 			}
-			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(model.Books[i])
 			return
 		}

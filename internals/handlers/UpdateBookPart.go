@@ -28,7 +28,6 @@ func UpdateBookPart(w http.ResponseWriter, r * http.Request){
 			if input.Title != nil{
 				model.Books[i].Title = *input.Title
 			}
-			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(model.Books[i])
 			return
 		}
