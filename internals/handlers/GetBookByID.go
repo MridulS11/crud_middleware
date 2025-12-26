@@ -18,4 +18,5 @@ func GetBookById(w http.ResponseWriter, r *http.Request){
 			}
 		}
 	}
+	http.Error(w, "Book not found", http.StatusNotFound)
 }
