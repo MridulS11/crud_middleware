@@ -3,6 +3,7 @@ package configs
 import "os"
 
 const ErrCode = "Error Encountered"
+const JsonPath = "./data.json"
 const Key = "golem"
 
 func Getkey() string{

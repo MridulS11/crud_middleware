@@ -4,6 +4,7 @@ import (
 	"crud_api/configs"
 	"crud_api/internals/handlers"
 	"crud_api/internals/middleware"
+	"crud_api/internals/store"
 	"fmt"
 	"log"
 	"net/http"
@@ -11,6 +12,7 @@ import (
 
 func main(){
 	mux := http.NewServeMux()
+	store.Load()
 	mux.HandleFunc("POST /books", handlers.AddBook)
 	mux.HandleFunc("GET /books", handlers.GetBook)
 	mux.HandleFunc("GET /books/{id}", handlers.GetBookById)
