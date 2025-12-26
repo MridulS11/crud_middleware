@@ -10,9 +10,9 @@ import (
 func SecLayer(next http.Handler) http.Handler{
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
-		
+
 		apikey := r.Header.Get("X-API-KEY")
-		if apikey != configs.Key{
+		if apikey != configs.Getkey(){
 			http.Error(w, "Incorrect API Key", http.StatusUnauthorized)
 			return 
 		}
