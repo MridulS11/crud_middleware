@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"crud_api/internals/model"
+	"crud_api/internals/store"
 	"encoding/json"
 	"net/http"
 	"strconv"
@@ -32,5 +33,6 @@ func UpdateBookPart(w http.ResponseWriter, r * http.Request){
 			return
 		}
 	}
+	store.Store()
 	http.Error(w, "Book Not Found", http.StatusNotFound)
 }

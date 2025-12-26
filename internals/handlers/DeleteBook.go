@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"crud_api/internals/model"
+	"crud_api/internals/store"
 	"net/http"
 	"slices"
 	"strconv"
@@ -30,5 +31,6 @@ func DeleteBook(w http.ResponseWriter, r *http.Request){
 		http.Error(w, "Value Not Found", http.StatusNotFound)
 	}
 
+	store.Store()
 	w.WriteHeader(http.StatusNoContent)
 }
